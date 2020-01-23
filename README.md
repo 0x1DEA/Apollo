@@ -1,7 +1,7 @@
-# Apollo Comic Publisher
+# Apollo Content Publisher
 
 ## About
-As a webcomic artist publishing yourself, you must have some understanding of web development and be able to maintain your website. Apollo is a CMS for both webcomic artists that aren't very familiar with web technologies and those with technical experience that just want to publish their comics online without a complicated or bloated CMS with a confusing setup and configuration.
+As a content creator, you must have some understanding of web development and be able to maintain your website. Apollo is a CMS for both people that aren't very familiar with web technologies and those with technical experience that just want to publish their content online without a complicated or bloated CMS like Wordpress with a confusing setup and configuration.
 Apollo is meant to be simple for beginners, yet extendable by anyone with modules and fully-customizable themes.
 
 ## I don't know much about servers!
@@ -21,7 +21,7 @@ Apollo uses Composer for dependencies but they are pre-installed in releases.
 
 ### Modules
 Apollo uses a hook system.
-To add your module, place a class extending the `ModuleTemplate.php` interface and place it in the `./control/modules` folder and it will automatically be loaded.
+To add your module, place a class extending the `ModuleTemplate.php` interface and place it in the `./system/modules` folder and it will automatically be loaded.
 To register hooks view the wiki for the list of names, actions and locations.
 ### Themes
 Apollo uses the Twig templating system. Multiple themes can be installed on one instance and switched. Templates and styles are stored in the database and may be edited and exported/flattened in the Control Center.
