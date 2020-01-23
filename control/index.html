@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Dashboard Template · Bootstrap</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+
+	<style>
+		.bd-placeholder-img {
+			font-size: 1.125rem;
+			text-anchor: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		@media (min-width: 768px) {
+			.bd-placeholder-img-lg {
+				font-size: 3.5rem;
+			}
+		}
+
+		.div-inline {
+			display: inline-block;
+		}
+
+		#editor {
+			position: relative;
+			top: 0px;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin-bottom: 20px;
+			box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+		}
+	</style>
+	<!-- Custom styles for this template -->
+	<link href="./assets/css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+	<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Apollo</a>
+	<ul class="navbar-nav px-3">
+		<li class="nav-item text-nowrap">
+			<a class="nav-link" href="#">Sign out</a>
+		</li>
+	</ul>
+</nav>
+
+<div class="container-fluid">
+	<div class="row">
+		<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+			<div class="sidebar-sticky">
+				<ul class="nav flex-column">
+					<li class="nav-item">
+						<a class="nav-link active" href="#dashboard"
+						   data-toggle="tab">
+							<span data-feather="home"></span>
+							Dashboard <span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#pages" data-toggle="tab">
+							<span data-feather="file"></span>
+							Pages
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#ide" data-toggle="tab">
+							<span data-feather="edit"></span>
+							Template Editor
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#new-resource" data-toggle="tab">
+							<span data-feather="file-plus"></span>
+							New Resource
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#modules" data-toggle="tab">
+							<span data-feather="layers"></span>
+							Modules
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#settings" data-toggle="tab">
+							<span data-feather="sliders"></span>
+							Settings / Configuration
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<main role="main"
+		      class="col-md-9 ml-sm-auto col-lg-10 px-4 tab-content">
+			<div class="tab-content">
+				<div class="tab-pane show active" id="dashboard">
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h1 class="h2">Dashboard</h1>
+						<div class="btn-toolbar mb-2 mb-md-0">
+							<div class="btn-group mr-2">
+								<button type="button"
+								        class="btn btn-sm btn-outline-secondary">
+									Share
+								</button>
+								<button type="button"
+								        class="btn btn-sm btn-outline-secondary">
+									Export
+								</button>
+							</div>
+							<button type="button"
+							        class="btn btn-sm btn-outline-secondary dropdown-toggle">
+								<span data-feather="calendar"></span>
+								This week
+							</button>
+						</div>
+					</div>
+					<p>The dashboard has no panels in this version of Apollo</p>
+				</div>
+				<div class="tab-pane fade" id="pages">
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h1 class="h2">Pages</h1>
+					</div>
+					<p>The page manager is not implemented in this version of Apollo</p>
+				</div>
+				<div class="tab-pane fade" id="ide">
+					<div class="container">
+						<div class="toast" style="position:absolute;bottom:0;z-index:999;right:15px;"
+						     data-autohide="true" data-delay="2000">
+							<div class="toast-header">
+								<strong class="mr-auto text-primary">Saved!</strong>
+								<small class="text-muted">now</small>
+								<button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+							</div>
+							<div class="toast-body">
+								Your content has successfully been saved to the database
+							</div>
+						</div>
+					</div>
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h1 class="h2">Editor</h1>
+
+					</div>
+					<div>
+						<div class="dropdown div-inline">
+							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown_templates1"
+							        data-toggle="dropdown" aria-haspopup="true"
+							        aria-expanded="false">
+								Theme
+							</button>
+							<div id="template1" class="dropdown-menu" aria-labelledby="dropdown_coins">
+								<form class="px-4 py-2">
+									<input type="search" class="form-control" id="searchTemplate1" placeholder="None"
+									       autofocus="autofocus">
+								</form>
+								<div id="templates1"></div>
+								<div id="empty1" class="dropdown-header">No themes found</div>
+							</div>
+						</div>
+						<div class="dropdown div-inline">
+							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown_templates2"
+							        data-toggle="dropdown" aria-haspopup="true"
+							        aria-expanded="false">
+								Group
+							</button>
+							<div id="template2" class="dropdown-menu" aria-labelledby="dropdown_coins">
+								<form class="px-4 py-2">
+									<input type="search" class="form-control" id="searchTemplate2" placeholder="None"
+									       autofocus="autofocus">
+								</form>
+								<div id="templates2"></div>
+								<div id="empty2" class="dropdown-header">No groups found</div>
+							</div>
+						</div>
+						<div class="dropdown div-inline">
+							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown_templates3"
+							        data-toggle="dropdown" aria-haspopup="true"
+							        aria-expanded="false">
+								Template
+							</button>
+							<div id="template3" class="dropdown-menu" aria-labelledby="dropdown_coins">
+								<form class="px-4 py-2">
+									<input type="search" class="form-control" id="searchTemplate3" placeholder="None"
+									       autofocus="autofocus">
+								</form>
+								<div id="templates3"></div>
+								<div id="empty3" class="dropdown-header">No templates found</div>
+							</div>
+						</div>
+						<p style="margin-bottom: unset;">Apollo templates use <a href="https://twig.symfony.com/">Twig</a>. Apollo settings can be accessed using `apollo.*` and page attributes from `page.*`</p>
+						<div id="editor" class="container"
+						     style="width:100%;height:700px;max-width:unset;"></div>
+						<div class="btn-toolbar mb-2 mb-md-0">
+							<button type="button" class="btn btn-secondary mr-1"
+							        onclick="beautify.beautify(editor.session);">
+								Beautify Code
+							</button>
+							<button type="button" class="btn btn-secondary"
+							        onclick="save()">
+								Save Template
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="new-resource">
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h1 class="h2">New Template</h1>
+					</div>
+					<form method="post" action="./ajax.php?newTemplate">
+						<div class="form-group">
+							<label for="templateName">Title</label>
+							<input type="text" class="form-control" id="templateName" placeholder="Enter template title">
+						</div>
+						<div class="form-group">
+							<label for="templateGroup">Group</label>
+							<input type="text" class="form-control" id="templateGroup" placeholder="Enter template group number">
+						</div>
+						<div class="form-group">
+							<label for="themeNumber">Theme</label>
+							<input type="text" class="form-control" id="themeNumber" placeholder="Enter theme number">
+						</div>
+						<button type="submit" class="btn btn-primary">Create</button>
+					</form>
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h1 class="h2">New Page</h1>
+					</div>
+					<form method="post" action="./ajax.php?newPage">
+						<div class="form-group">
+							<label for="pageTitle">Title</label>
+							<input type="text" class="form-control" id="pageTitle" placeholder="Enter title">
+						</div>
+						<div class="form-group">
+							<label for="pageDescription">Description</label>
+							<input type="text" class="form-control" id="pageDescription" placeholder="Enter description">
+						</div>
+						<div class="form-group">
+							<label for="pageSlug">Slug</label>
+							<input type="text" class="form-control" id="pageSlug" placeholder="Enter page slug">
+						</div>
+						<div class="form-group">
+							<label for="pageTemplate">Template</label>
+							<input type="text" class="form-control" id="pageTemplate" placeholder="Enter root template">
+						</div>
+						<button type="submit" class="btn btn-primary">Create</button>
+					</form>
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h1 class="h2">New Group</h1>
+					</div>
+					<form method="post" action="./ajax.php?newGroup">
+						<div class="form-group">
+							<label for="groupName">Title</label>
+							<input type="text" class="form-control" id="groupName" placeholder="Enter safe groupname">
+						</div>
+						<div class="form-group">
+							<label for="groupTitle">Description</label>
+							<input type="text" class="form-control" id="groupTitle" placeholder="Enter long title">
+						</div>
+						<div class="form-group">
+							<label for="groupDescription">Slug</label>
+							<input type="text" class="form-control" id="groupDescription" placeholder="Enter description">
+						</div>
+						<button type="submit" class="btn btn-primary">Create</button>
+					</form>
+				</div>
+				<div class="tab-pane fade" id="modules">
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h1 class="h2">Modules</h1>
+					</div>
+					<p>The module system is not active in this version of Apollo</p>
+				</div>
+				<div class="tab-pane fade" id="settings">
+					<div
+						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h1 class="h2">Settings & Configuration</h1>
+					</div>
+					<p>Settings are unbound to template variables or used internally in this version of Apollo</p>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script
+	src="https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ace.js"></script>
+<script
+	src="https://unpkg.com/ace-builds@1.3.3/src-min-noconflict/ext-beautify.js"
+	type="text/javascript" charset="utf-8"></script>
+<script>
+    feather.replace();
+    let theme = "1";
+    let group = "0";
+    let template = "404";
+    let items1 = document.getElementsByClassName("dropdown-item");
+    let items2 = document.getElementsByClassName("dropdown-item");
+    let items3 = document.getElementsByClassName("dropdown-item");
+    var beautify = ace.require("ace/ext/beautify");
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/clouds");
+    editor.session.setMode("ace/mode/twig");
+
+    function save() {
+        var data = new FormData();
+        data.append('templateSave', "1");
+        data.append('themeNumber', theme);
+        data.append('groupNumber', group);
+        data.append('templateName', template);
+        data.append('templateData', editor.getValue());
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                $('.toast').toast('show');
+            }
+        };
+        xmlhttp.open("POST", "ajax.php", true);
+        xmlhttp.send(data);
+    }
+
+    function buildDropDown(num) {
+        let contents = [];
+        let names = [];
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                names = this.responseText.split(",");
+                for (let name of names) {
+                    contents.push('<input type="button" class="dropdown-item" type="button" value="' + name + '"/>')
+                }
+                $('#templates' + num).empty();
+                $('#templates' + num).append(contents.join(""));
+
+                //Hide the row that shows no items were found
+                $('#empty' + num).hide();
+            }
+        };
+        xmlhttp.open("GET", "ajax.php?getList&type=" + num + "&theme=" + theme + "&group=" + group, true);
+        xmlhttp.send();
+    }
+
+    function fetch(template) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                editor.setValue(this.responseText);
+            }
+        };
+        xmlhttp.open("GET", "ajax.php?getData&template=" + template + "&theme=" + theme, true);
+        xmlhttp.send();
+    }
+
+    function filter(word, num) {
+        let length = 0;
+        let items = [];
+        switch (num) {
+            case 1:
+                length = items1.length;
+                items = items1;
+                break;
+            case 2:
+                length = items2.length;
+                items = items2;
+                break;
+            case 3:
+                length = items3.length;
+                items = items3;
+                break;
+        }
+        let collection = [];
+        let hidden = 0;
+        for (let i = 0; i < length; i++) {
+            if (items[i].value.toLowerCase().startsWith(word)) {
+                $(items[i]).show();
+            } else {
+                $(items[i]).hide();
+                hidden++;
+            }
+        }
+
+        //If all items are hidden, show the empty view
+        if (hidden === items.length) {
+            $('#empty' + num).show();
+        } else {
+            $('#empty' + num).hide();
+        }
+    }
+
+    $('#templates1').on('click', '.dropdown-item', function () {
+        $('#dropdown_templates1').text($(this)[0].value);
+        $("#dropdown_templates1").dropdown('toggle');
+        theme = $(this)[0].value;
+        buildDropDown(2);
+    });
+
+    $('#templates2').on('click', '.dropdown-item', function () {
+        $('#dropdown_templates2').text($(this)[0].value);
+        $("#dropdown_templates2").dropdown('toggle');
+        group = $(this)[0].value;
+        buildDropDown(3);
+    });
+
+    $('#templates3').on('click', '.dropdown-item', function () {
+        $('#dropdown_templates3').text($(this)[0].value);
+        $("#dropdown_templates3").dropdown('toggle');
+        template = $(this)[0].value;
+        fetch(template)
+    });
+
+    $('#searchTemplate1').on('input', function () {
+        filter($('#searchTemplate1').val().trim().toLowerCase(), 1)
+    });
+
+    $('#searchTemplate2').on('input', function () {
+        filter($('#searchTemplate1').val().trim().toLowerCase(), 2)
+    });
+
+    $('#searchTemplate3').on('input', function () {
+        filter($('#searchTemplate1').val().trim().toLowerCase(), 3)
+    });
+
+    buildDropDown(1);
+</script>
+</body>
+</html>
