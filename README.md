@@ -1,9 +1,11 @@
+
 # Apollo
 Apollo is a decoupled CMS for easily publishing different types content on the web. It's official modules include:
 - Comics
 - Videos
 - Forums
-- Blog  
+- Blog
+
 It's core modules include:
 - Pages
 - Template Manager
