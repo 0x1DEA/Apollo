@@ -10,21 +10,6 @@
 	<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
 
 	<style>
-		.bd-placeholder-img {
-			font-size: 1.125rem;
-			text-anchor: middle;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
-		}
-
-		@media (min-width: 768px) {
-			.bd-placeholder-img-lg {
-				font-size: 3.5rem;
-			}
-		}
-
 		.div-inline {
 			display: inline-block;
 		}
@@ -197,7 +182,9 @@
 								<div id="empty3" class="dropdown-header">No templates found</div>
 							</div>
 						</div>
-						<p style="margin-bottom: unset;">Apollo templates use <a href="https://twig.symfony.com/">Twig</a>. Apollo settings can be accessed using `apollo.*` and page attributes from `page.*`</p>
+						<p style="margin-bottom: unset;">Apollo templates use <a
+							href="https://twig.symfony.com/">Twig</a>. Apollo settings can be accessed using `apollo.*`
+							and page attributes from `page.*`</p>
 						<div id="editor" class="container"
 						     style="width:100%;height:700px;max-width:unset;"></div>
 						<div class="btn-toolbar mb-2 mb-md-0">
@@ -217,18 +204,21 @@
 						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 						<h1 class="h2">New Template</h1>
 					</div>
-					<form method="post" action="./ajax.php?newTemplate">
+					<form method="POST" action="./ajax.php">
+						<input type="hidden" class="form-control" name="newTemplate" value="true">
 						<div class="form-group">
 							<label for="templateName">Title</label>
-							<input type="text" class="form-control" id="templateName" placeholder="Enter template title">
+							<input type="text" class="form-control" name="templateName" id="templateName"
+							       placeholder="Enter template title">
 						</div>
 						<div class="form-group">
 							<label for="templateGroup">Group</label>
-							<input type="text" class="form-control" id="templateGroup" placeholder="Enter template group number">
+							<input type="text" class="form-control" name="templateGroup" id="templateGroup"
+							       placeholder="Enter template group number">
 						</div>
 						<div class="form-group">
 							<label for="themeNumber">Theme</label>
-							<input type="text" class="form-control" id="themeNumber" placeholder="Enter theme number">
+							<input type="text" class="form-control" name="themeNumber" id="themeNumber" placeholder="Enter theme number">
 						</div>
 						<button type="submit" class="btn btn-primary">Create</button>
 					</form>
@@ -236,14 +226,15 @@
 						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 						<h1 class="h2">New Page</h1>
 					</div>
-					<form method="post" action="./ajax.php?newPage">
+					<form method="POST" action="./ajax.php?newPage">
 						<div class="form-group">
 							<label for="pageTitle">Title</label>
 							<input type="text" class="form-control" id="pageTitle" placeholder="Enter title">
 						</div>
 						<div class="form-group">
 							<label for="pageDescription">Description</label>
-							<input type="text" class="form-control" id="pageDescription" placeholder="Enter description">
+							<input type="text" class="form-control" id="pageDescription"
+							       placeholder="Enter description">
 						</div>
 						<div class="form-group">
 							<label for="pageSlug">Slug</label>
@@ -259,7 +250,7 @@
 						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 						<h1 class="h2">New Group</h1>
 					</div>
-					<form method="post" action="./ajax.php?newGroup">
+					<form method="POST" action="./ajax.php?newGroup">
 						<div class="form-group">
 							<label for="groupName">Title</label>
 							<input type="text" class="form-control" id="groupName" placeholder="Enter safe groupname">
@@ -270,7 +261,8 @@
 						</div>
 						<div class="form-group">
 							<label for="groupDescription">Slug</label>
-							<input type="text" class="form-control" id="groupDescription" placeholder="Enter description">
+							<input type="text" class="form-control" id="groupDescription"
+							       placeholder="Enter description">
 						</div>
 						<button type="submit" class="btn btn-primary">Create</button>
 					</form>

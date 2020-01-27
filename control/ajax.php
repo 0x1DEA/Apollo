@@ -9,7 +9,7 @@ use Apollo\Core\Database;
 
 $db = new Database(DB_CREDENTIALS);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['templateSave'])) {
         $db->query(
             'UPDATE `templates` SET `version` = `version` + 1, `modified` = ?, `template` = ? WHERE `theme` = ? AND `title` = ? AND `templateGroup` = ?',
@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST['pageSlug'],
             $_POST['pageTemplate']
         );
+        header('Location: /control/');
     } elseif (isset($_POST['newGroup'])) {
         $db->query(
             'INSERT INTO `templategroups` (`name`, `title`, `description`) VALUES (?, ?, ?)',
@@ -34,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST['groupTitle'],
             $_POST['groupDescription']
         );
+        header('Location: /control/');
     } elseif (isset($_POST['newTemplate'])) {
         $db->query(
             'INSERT INTO `templates` (`title`, `modified`, `theme`, `templategroup`) VALUES (?, ?, ?, ?)',
@@ -42,8 +44,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST['themeNumber'],
             $_POST['templateGroup']
         );
+        header('Location: /control/');
+    } elseif (isset($_POST['newComic'])) {
+        $db->query(
+            'INSERT INTO `templates` (`title`, `modified`, `theme`, `templategroup`) VALUES (?, ?, ?, ?)',
+            $_POST['templateName'],
+            time(),
+            $_POST['themeNumber'],
+            $_POST['templateGroup']
+        );
+        header('Location: /control/');
     }
-} elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
+} elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['getList'])) {
         switch ($_GET['type']) {
             case 1:
