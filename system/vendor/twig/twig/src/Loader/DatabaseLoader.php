@@ -1,5 +1,7 @@
 <?php
 
+namespace Twig\Loader;
+
 require_once 'LoaderInterface.php';
 
 use Apollo\Core\Database;
@@ -7,7 +9,7 @@ use Twig\Error\LoaderError;
 use Twig\Loader\LoaderInterface;
 use Twig\Source;
 
-class DatabaseLoader implements LoaderInterface
+final class DatabaseLoader implements LoaderInterface
 {
     protected Database $db;
 
@@ -65,7 +67,7 @@ class DatabaseLoader implements LoaderInterface
         // TODO: edit query to only select value asked for
         if ($data->numRows() < 1) {
             // TODO: Template error
-            return "row not found in templates table";
+            $apollo->handler->error(ErrorHandler::TEMPLATE_MISSING);
         } else {
             $data = $data->fetchArray();
                 return $data[$column];
