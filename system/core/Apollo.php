@@ -45,6 +45,22 @@ class Apollo
      * @var string
      */
     public string $theme;
+    /**
+     * @var ErrorHandler
+     */
+    public ErrorHandler $handler;
+    /**
+     * @var Hooks
+     */
+    public Hooks $modules;
+    /**
+     * @var Templates
+     */
+    public Templates $templates;
+    /**
+     * @var Database
+     */
+    public Database $db;
 
     public function __construct()
     {

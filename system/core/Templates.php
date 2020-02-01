@@ -2,16 +2,13 @@
 
 namespace Apollo\Core;
 
-use DatabaseLoader;
+use Twig\Loader\DatabaseLoader;
 use Exception;
 use MatthiasMullie\Minify;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
-
-require_once(SYS_DIR.'/vendor/twig/twig/src/Loader/DatabaseLoader.php');
-require_once(SYS_DIR.'/vendor/autoload.php');
 
 class Templates
 {
@@ -34,7 +31,7 @@ class Templates
      */
     public function cacheCSS(string $name)
     {
-        $data = $this->db->query('SELECT FROM styles WHERE name = ?', $name)
+        $data = $this->db->query('SELECT * FROM styles WHERE name = ?', $name)
                          ->fetchAll();
         $css  = '';
         for ($i = 0; $i < count($data); $i++) {
@@ -43,7 +40,7 @@ class Templates
         $minify = new Minify\CSS($css);
 
         file_put_contents(
-            SYS_DIR.'./cache/'.$name.'/'.bin2hex(random_bytes(5)).'.template',
+            SYS_DIR.'./cache/'.$name.'.css',
             $minify->minify()
         );
     }
