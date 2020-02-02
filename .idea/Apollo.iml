@@ -7,6 +7,7 @@
       <excludeFolder url="file://$MODULE_DIR$/system/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/system/vendor/matthiasmullie/minify" />
       <excludeFolder url="file://$MODULE_DIR$/system/vendor/matthiasmullie/path-converter" />
+      <excludeFolder url="file://$MODULE_DIR$/system/vendor/nikic/fast-route" />
       <excludeFolder url="file://$MODULE_DIR$/system/vendor/symfony/polyfill-ctype" />
       <excludeFolder url="file://$MODULE_DIR$/system/vendor/symfony/polyfill-mbstring" />
       <excludeFolder url="file://$MODULE_DIR$/system/vendor/twig/twig" />
@@ -20,5 +21,6 @@
     <orderEntry type="library" name="ace" level="application" />
     <orderEntry type="library" name="ext-beautify" level="application" />
     <orderEntry type="library" name="jquery-3.4.1.slim" level="application" />
+    <orderEntry type="library" name="carbon-components" level="application" />
   </component>
 </module>
