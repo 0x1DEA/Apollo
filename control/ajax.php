@@ -21,10 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         );
     } elseif (isset($_POST['newPage'])) {
         $db->query(
-            'INSERT INTO `pages` (`title`, `slug`, `description`, `template`) VALUES (?, ?, ?, ?)',
+            'INSERT INTO `templates` (`title`, `slug`, `description`, `template`) VALUES (?, ?, ?, ?)',
             $_POST['pageTitle'],
-            $_POST['pageSlug'],
             $_POST['pageDescription'],
+            $_POST['pageSlug'],
             $_POST['pageTemplate']
         );
         header('Location: /control/');
