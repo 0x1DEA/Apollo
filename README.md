@@ -17,7 +17,7 @@
   <a href="#" alt="PHP Version">
     <img src="https://img.shields.io/badge/php-%5E7.4-informational" />
   </a>
-  <a href="#" alt="Travis Build">>
+  <a href="#" alt="Travis Build">
     <img src="https://img.shields.io/travis/SeeBeyondDev/Apollo"
   </a>
   <a href="https://discord.gg/fxF8MPm" alt="Chat on Discord">
