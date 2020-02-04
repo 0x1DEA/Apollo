@@ -2,18 +2,18 @@
 
 define('FEBRUARY', 1);
 
-require_once './system/config.php';
+require_once SYS_DIR.'/config.php';
 
 require_once(SYS_DIR.'/vendor/autoload.php');
 
-require_once './system/core/Apollo.php';
-require_once './system/core/Database.php';
-require_once './system/core/Templates.php';
-require_once './system/core/Router.php';
-require_once './system/core/ErrorHandler.php';
-require_once './system/core/Hooks.php';
+require_once SYS_DIR.'/core/Apollo.php';
+require_once SYS_DIR.'/core/Database.php';
+require_once SYS_DIR.'/core/Templates.php';
+require_once SYS_DIR.'/core/Router.php';
+require_once SYS_DIR.'/core/ErrorHandler.php';
+require_once SYS_DIR.'/core/Hooks.php';
 
-require_once './system/processors/Comic.php';
+require_once SYS_DIR.'/processors/Comic.php';
 
 use Apollo\Core\Apollo;
 use Apollo\Core\Database;

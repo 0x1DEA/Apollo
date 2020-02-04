@@ -9,7 +9,7 @@ class ComposerAutoloaderInitb53841ae87bfa9a95c0241ee5afca200
     public static function loadClassLoader($class)
     {
         if ('Composer\Autoload\ClassLoader' === $class) {
-            require __DIR__ . '/ClassLoader.php';
+            require __DIR__.'/ClassLoader.php';
         }
     }
 
@@ -25,21 +25,21 @@ class ComposerAutoloaderInitb53841ae87bfa9a95c0241ee5afca200
 
         $useStaticLoader = PHP_VERSION_ID >= 50600 && !defined('HHVM_VERSION') && (!function_exists('zend_loader_file_encoded') || !zend_loader_file_encoded());
         if ($useStaticLoader) {
-            require_once __DIR__ . '/autoload_static.php';
+            require_once __DIR__.'/autoload_static.php';
 
             call_user_func(\Composer\Autoload\ComposerStaticInitb53841ae87bfa9a95c0241ee5afca200::getInitializer($loader));
         } else {
-            $map = require __DIR__ . '/autoload_namespaces.php';
+            $map = require __DIR__.'/autoload_namespaces.php';
             foreach ($map as $namespace => $path) {
                 $loader->set($namespace, $path);
             }
 
-            $map = require __DIR__ . '/autoload_psr4.php';
+            $map = require __DIR__.'/autoload_psr4.php';
             foreach ($map as $namespace => $path) {
                 $loader->setPsr4($namespace, $path);
             }
 
-            $classMap = require __DIR__ . '/autoload_classmap.php';
+            $classMap = require __DIR__.'/autoload_classmap.php';
             if ($classMap) {
                 $loader->addClassMap($classMap);
             }
@@ -50,7 +50,7 @@ class ComposerAutoloaderInitb53841ae87bfa9a95c0241ee5afca200
         if ($useStaticLoader) {
             $includeFiles = Composer\Autoload\ComposerStaticInitb53841ae87bfa9a95c0241ee5afca200::$files;
         } else {
-            $includeFiles = require __DIR__ . '/autoload_files.php';
+            $includeFiles = require __DIR__.'/autoload_files.php';
         }
         foreach ($includeFiles as $fileIdentifier => $file) {
             composerRequireb53841ae87bfa9a95c0241ee5afca200($fileIdentifier, $file);

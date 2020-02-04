@@ -7,9 +7,9 @@ namespace Composer\Autoload;
 class ComposerStaticInitb53841ae87bfa9a95c0241ee5afca200
 {
     public static $files = array (
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__.'/..',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__.'/..',
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__.'/..',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -36,27 +36,27 @@ class ComposerStaticInitb53841ae87bfa9a95c0241ee5afca200
     public static $prefixDirsPsr4 = array (
         'Twig\\' => 
         array (
-            0 => __DIR__ . '/..' . '/twig/twig/src',
+            0 => __DIR__.'/..',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+            0 => __DIR__.'/..',
         ),
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+            0 => __DIR__.'/..',
         ),
         'MatthiasMullie\\PathConverter\\' => 
         array (
-            0 => __DIR__ . '/..' . '/matthiasmullie/path-converter/src',
+            0 => __DIR__.'/..',
         ),
         'MatthiasMullie\\Minify\\' => 
         array (
-            0 => __DIR__ . '/..' . '/matthiasmullie/minify/src',
+            0 => __DIR__.'/..',
         ),
         'FastRoute\\' => 
         array (
-            0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+            0 => __DIR__.'/..',
         ),
     );
 

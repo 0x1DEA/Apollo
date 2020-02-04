@@ -7,9 +7,115 @@
 	<title>Dashboard Template · Bootstrap</title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 
 	<style>
+		body {
+			font-size: .875rem;
+		}
+
+		.feather {
+			width: 16px;
+			height: 16px;
+			vertical-align: text-bottom;
+		}
+
+		/*
+		 * Sidebar
+		 */
+
+		.sidebar {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 100; /* Behind the navbar */
+			padding: 48px 0 0; /* Height of navbar */
+			box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+		}
+
+		.sidebar-sticky {
+			position: relative;
+			top: 0;
+			height: calc(100vh - 48px);
+			padding-top: .5rem;
+			overflow-x: hidden;
+			overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+		}
+
+		@supports ((position: -webkit-sticky) or (position: sticky)) {
+			.sidebar-sticky {
+				position: -webkit-sticky;
+				position: sticky;
+			}
+		}
+
+		.sidebar .nav-link {
+			font-weight: 500;
+			color: #333;
+		}
+
+		.sidebar .nav-link .feather {
+			margin-right: 4px;
+			color: #999;
+		}
+
+		.sidebar .nav-link.active {
+			color: #007bff;
+		}
+
+		.sidebar .nav-link:hover .feather,
+		.sidebar .nav-link.active .feather {
+			color: inherit;
+		}
+
+		.sidebar-heading {
+			font-size: .75rem;
+			text-transform: uppercase;
+		}
+
+		/*
+		 * Content
+		 */
+
+		[role="main"] {
+			padding-top: 133px; /* Space for fixed navbar */
+		}
+
+		@media (min-width: 768px) {
+			[role="main"] {
+				padding-top: 48px; /* Space for fixed navbar */
+			}
+		}
+
+		/*
+		 * Navbar
+		 */
+
+		.navbar-brand {
+			padding-top: .75rem;
+			padding-bottom: .75rem;
+			font-size: 1rem;
+			background-color: rgba(0, 0, 0, .25);
+			box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+		}
+
+		.navbar .form-control {
+			padding: .75rem 1rem;
+			border-width: 0;
+			border-radius: 0;
+		}
+
+		.form-control-dark {
+			color: #fff;
+			background-color: rgba(255, 255, 255, .1);
+			border-color: rgba(255, 255, 255, .1);
+		}
+
+		.form-control-dark:focus {
+			border-color: transparent;
+			box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+		}
 		.div-inline {
 			display: inline-block;
 		}
@@ -24,8 +130,6 @@
 			box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
 		}
 	</style>
-	<!-- Custom styles for this template -->
-	<link href="./assets/css/dashboard.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -204,7 +308,7 @@
 						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 						<h1 class="h2">New Template</h1>
 					</div>
-					<form method="POST" action="./ajax.php">
+					<form method="POST" action="ajax.php">
 						<input type="hidden" class="form-control" name="newTemplate" value="true">
 						<div class="form-group">
 							<label for="templateName">Title</label>
@@ -226,7 +330,7 @@
 						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 						<h1 class="h2">New Page</h1>
 					</div>
-					<form method="POST" action="./ajax.php?newPage">
+					<form method="POST" action="ajax.php?newPage">
 						<div class="form-group">
 							<label for="pageTitle">Title</label>
 							<input type="text" class="form-control" id="pageTitle" placeholder="Enter title">
@@ -250,7 +354,7 @@
 						class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 						<h1 class="h2">New Group</h1>
 					</div>
-					<form method="POST" action="./ajax.php?newGroup">
+					<form method="POST" action="ajax.php?newGroup">
 						<div class="form-group">
 							<label for="groupName">Title</label>
 							<input type="text" class="form-control" id="groupName" placeholder="Enter safe groupname">
@@ -286,7 +390,7 @@
 	</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
 <script
