@@ -5,9 +5,9 @@ namespace Apollo\Processors;
 use Apollo\Core\Database;
 use Apollo\Core\Proccessor;
 
-require_once 'Proccessor.php';
+require_once './../core/Proccessor.php';
 
-class Comic implements Proccessor
+class Blog implements Proccessor
 {
 
     private Database $db;
@@ -21,12 +21,12 @@ class Comic implements Proccessor
     {
         if ($index === 'page') {
             $data = $this->db->query(
-                'SELECT * FROM `comics` WHERE `id` = ?',
+                'SELECT * FROM `blog` WHERE `id` = ?',
                 $value
             )->fetchArray();
         } else {
             $data = $this->db->query(
-                'SELECT * FROM `comics` WHERE `slug` = ?',
+                'SELECT * FROM `blog` WHERE `slug` = ?',
                 $value
             )->fetchArray();
         }

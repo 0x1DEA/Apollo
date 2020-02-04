@@ -1,7 +1,10 @@
 <?php
 
 define('FEBRUARY', 1);
+
 require_once './system/config.php';
+
+require_once(SYS_DIR.'/vendor/autoload.php');
 
 require_once './system/core/Apollo.php';
 require_once './system/core/Database.php';
@@ -16,43 +19,33 @@ use Apollo\Core\Apollo;
 use Apollo\Core\Database;
 use Apollo\Core\Templates;
 use Apollo\Core\Router;
+use Apollo\Core\ErrorHandler;
+use Apollo\Core\Hooks;
 
-//use Apollo\Core\ErrorHandler;
-//use Apollo\Core\Hooks;
+$path = explode("/", $_SERVER['REQUEST_URI']);
 
-use Apollo\Processors\Comic;
-
-$path = explode("/", $_GET['path']);
-
-// TODO: Functional error handler
-$db        = new Database(DB_CREDENTIALS);
 $apollo    = new Apollo();
+$db        = new Database(DB_CREDENTIALS);
 $templates = new Templates($db);
+$handler   = new ErrorHandler();
 $router    = new Router();
-//$handler   = new ErrorHandler();
-
-$apollo->router = &$router;
-$apollo->theme  = 1;
 // TODO: Add hooks and modules
-//$modules   = new Hooks();
+$modules = new Hooks();
 
-/*
-$modules = array();
-foreach (glob(CTRL_DIR.'modules/*.php') as $filename) {
-    $file = CTRL_DIR.'modules/'.$filename.'.php';
-    require_once $file;
-    $modules->list[$filename] = new $filename(ass this deosns mak sense);
-}*/
+$apollo->theme = 1;
 
 $resourceTypes = array('comic');
 
-$apolloInfo = array(
-    'theme'   => &$apollo->theme,
-    'version' => &$apollo->version
+// TODO: Implement advanced routing
+$pageData = array(
+    'apollo' => array(
+        'theme'   => &$apollo->theme,
+        'version' => &$apollo->version
+    )
 );
 
-// TODO: Implement advanced routing
-$pageData = array('apollo' => $apolloInfo);
+/*
+ * Old Hardcoded Routing
 if (empty($path[0])) {
     $path[0] = 'index';
 }
@@ -61,7 +54,7 @@ if ((count($path) === 2) && (($path[0] === 'comic') || ($path[0] === 'page'))) {
     $comic      = new Comic($db);
     $returnData = $comic->fetch($path[1], $path[0]);
     if (empty($returnData)) {
-        header("Location: /404");
+        //header("Location: /404");
     } else {
         $template          = 'comic';
         $pageData['comic'] = $returnData;
@@ -69,14 +62,35 @@ if ((count($path) === 2) && (($path[0] === 'comic') || ($path[0] === 'page'))) {
 } else {
     $data = $db->query(
         'SELECT * FROM `pages` WHERE `slug` = ?',
-        $_GET['path']
-    )->fetchArray();
+        $_SERVER['REQUEST_URI'])->fetchArray();
     if (empty($data)) {
-        header("Location: /404");
+        //$handler->notFound();
     } else {
         $template         = $data['template'];
         $pageData['page'] = $data;
     }
+}*/
+
+$data = $db->query(
+    'SELECT * FROM `pages` WHERE `slug` = ?',
+    trim($_SERVER['REQUEST_URI'], '/')
+)->fetchArray();
+if (empty($data)) {
+    $handler->notFound();
+} else {
+    $template         = $data['template'];
+    $pageData['page'] = $data;
 }
-// TODO: Implement template errors
-$templates->render($template, $pageData);
+
+try {
+    $templates->render($template, $pageData);
+} catch (\Twig\Error\LoaderError $e) {
+    $handler->error(ErrorHandler::TEMPLATE_LOADER);
+} catch (\Twig\Error\RuntimeError $e) {
+    $handler->error(ErrorHandler::TEMPLATE_RUNTIME);
+} catch (\Twig\Error\SyntaxError $e) {
+    $handler->error(ErrorHandler::TEMPLATE_SYNTAX);
+} catch (TypeError $e) {
+    // Type error is most likely a missing template from an unset $template
+    $handler->error(ErrorHandler::TEMPLATE_MISSING);
+}
