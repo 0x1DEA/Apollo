@@ -12,7 +12,7 @@
     <img alt="GitHub issues" src="https://img.shields.io/github/issues/SeeBeyondDev/Apollo">
   </a>
   <a href="https://github.com/SeeBeyondDev/Apollo/graphs/contributors" alt="Contributors">
-      <img src="https://img.shields.io/github/contributors/badges/shields" />
+      <img src="https://img.shields.io/github/contributors/SeeBeyondDev/Apollo" />
   </a>
   <a href="https://discord.gg/fxF8MPm">
     <img src="https://img.shields.io/discord/673330782357422091?logo=discord" alt="Chat on Discord">
