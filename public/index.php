@@ -1,96 +1,30 @@
 <?php
 
-define('FEBRUARY', 1);
+use Apollo\Core\Apollo;
+use Apollo\Core\Database;
+use Apollo\Core\ErrorHandler;
+use Apollo\Core\Extensions;
+use Apollo\Core\Router;
+use Apollo\Core\Templates;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
-require_once SYS_DIR.'/config.php';
+require_once './../config.php';
 
 require_once(SYS_DIR.'/vendor/autoload.php');
 
-require_once SYS_DIR.'/core/Apollo.php';
-require_once SYS_DIR.'/core/Database.php';
-require_once SYS_DIR.'/core/Templates.php';
-require_once SYS_DIR.'/core/Router.php';
-require_once SYS_DIR.'/core/ErrorHandler.php';
-require_once SYS_DIR.'/core/Hooks.php';
+$apollo       = new Apollo();
+$db           = new Database(DB_CREDENTIALS);
+$templates    = new Templates($db);
+$errorHandler = new ErrorHandler($db);
+$router       = new Router($apollo);
+$eventHandler = new EventDispatcher();
+$extensions   = new Extensions();
 
-require_once SYS_DIR.'/processors/Comic.php';
+$apollo->db      = &$db;
+$apollo->handler = &$errorHandler;
 
-use Apollo\Core\Apollo;
-use Apollo\Core\Database;
-use Apollo\Core\Templates;
-use Apollo\Core\Router;
-use Apollo\Core\ErrorHandler;
-use Apollo\Core\Hooks;
+$extensions->load($eventHandler);
 
-$path = explode("/", $_SERVER['REQUEST_URI']);
+$router->register();
 
-$apollo    = new Apollo();
-$db        = new Database(DB_CREDENTIALS);
-$templates = new Templates($db);
-$handler   = new ErrorHandler();
-$router    = new Router();
-// TODO: Add hooks and modules
-$modules = new Hooks();
-
-$apollo->theme = 1;
-
-$resourceTypes = array('comic');
-
-// TODO: Implement advanced routing
-$pageData = array(
-    'apollo' => array(
-        'theme'   => &$apollo->theme,
-        'version' => &$apollo->version
-    )
-);
-
-/*
- * Old Hardcoded Routing
-if (empty($path[0])) {
-    $path[0] = 'index';
-}
-
-if ((count($path) === 2) && (($path[0] === 'comic') || ($path[0] === 'page'))) {
-    $comic      = new Comic($db);
-    $returnData = $comic->fetch($path[1], $path[0]);
-    if (empty($returnData)) {
-        //header("Location: /404");
-    } else {
-        $template          = 'comic';
-        $pageData['comic'] = $returnData;
-    }
-} else {
-    $data = $db->query(
-        'SELECT * FROM `pages` WHERE `slug` = ?',
-        $_SERVER['REQUEST_URI'])->fetchArray();
-    if (empty($data)) {
-        //$handler->notFound();
-    } else {
-        $template         = $data['template'];
-        $pageData['page'] = $data;
-    }
-}*/
-
-$data = $db->query(
-    'SELECT * FROM `pages` WHERE `slug` = ?',
-    trim($_SERVER['REQUEST_URI'], '/')
-)->fetchArray();
-if (empty($data)) {
-    $handler->notFound();
-} else {
-    $template         = $data['template'];
-    $pageData['page'] = $data;
-}
-
-try {
-    $templates->render($template, $pageData);
-} catch (\Twig\Error\LoaderError $e) {
-    $handler->error(ErrorHandler::TEMPLATE_LOADER);
-} catch (\Twig\Error\RuntimeError $e) {
-    $handler->error(ErrorHandler::TEMPLATE_RUNTIME);
-} catch (\Twig\Error\SyntaxError $e) {
-    $handler->error(ErrorHandler::TEMPLATE_SYNTAX);
-} catch (TypeError $e) {
-    // Type error is most likely a missing template from an unset $template
-    $handler->error(ErrorHandler::TEMPLATE_MISSING);
-}
+$router->dispatch();

@@ -3,9 +3,18 @@
     "php": ">=7.4.0",
     "matthiasmullie/minify": "^1.3",
     "twig/twig": "^3.0",
-    "nikic/fast-route": "^1.3"
+    "nikic/fast-route": "^1.3",
+    "ext-mysqli": "*",
+    "symfony/event-dispatcher": "^5.0"
   },
   "config": {
     "vendor-dir": "vendor"
+  },
+  "autoload": {
+    "psr-4": {
+      "Apollo\\Core\\": "core/",
+      "Apollo\\Extensions\\" : "extensions/",
+      "Apollo\\Events\\" : "events/"
+    }
   }
 }

@@ -31,7 +31,7 @@ class Templates
      */
     public function cacheCSS(string $name)
     {
-        $data = $this->db->query('SELECT * FROM styles WHERE name = ?', $name)
+        $data = $this->db->query('SELECT * FROM `styles` WHERE `name` = ?', $name)
                          ->fetchAll();
         $css  = '';
         for ($i = 0; $i < count($data); $i++) {
@@ -52,12 +52,18 @@ class Templates
      *
      * @param  array  $args
      *
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
      */
     public function render(string $template, array $args)
     {
-        echo $this->renderer->render($template, $args);
+        global $handler;
+        try {
+            echo $this->renderer->render($template, $args);
+        } catch (LoaderError $e) {
+            $handler->error(ErrorHandler::INVALID_METHOD);
+        } catch (RuntimeError $e) {
+            $handler->error(ErrorHandler::INVALID_METHOD);
+        } catch (SyntaxError $e) {
+            $handler->error(ErrorHandler::INVALID_METHOD);
+        }
     }
 }

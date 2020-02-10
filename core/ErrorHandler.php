@@ -9,6 +9,15 @@ class ErrorHandler
     public const TEMPLATE_RUNTIME = 'Template Runtime Error';
     public const TEMPLATE_LOADER = 'Template Loader Error';
     public const TEMPLATE_MISSING = 'Missing Template Error';
+    public const TEMPLATE_UNKNOWN = 'Unknown Template Error';
+    public const INVALID_METHOD = 'Invalid Request Method';
+
+    private Database $db;
+
+    public function __construct(Database $db)
+    {
+        $this->db = $db;
+    }
 
     /**
      * Receives an error with an optional argument
@@ -21,8 +30,11 @@ class ErrorHandler
     }
 
     public function notFound() {
-        // TODO: Prevent potential redirect loop caused by missing 404 page/template
-        header("Location: /404");
+        global $templates;
+        $data = $this->db->query('SELECT * FROM `pages` WHERE `slug` = 404')->fetchArray();
+        $template         = $data['template'];
+        $pageData['page'] = $data;
+        $templates->render($template, $pageData);
         exit();
     }
 
@@ -32,7 +44,7 @@ class ErrorHandler
         header("Content-type: text/html; charset=UTF-8");
         $page = "
         <!doctype html>
-        <html>
+        <html lang='en'>
         <head>
             <title>System Error {$code}</title>
         </head>

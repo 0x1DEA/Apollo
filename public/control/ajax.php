@@ -1,8 +1,7 @@
 <?php
 // TEMPORARY FILE
-// TODO: Implement unique backend objects and classes
 define('FEBRUARY', 1);
-require_once './../system/config.php';
+require_once './../../config.php';
 require_once SYS_DIR.'/core/Database.php';
 
 use Apollo\Core\Database;
@@ -21,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         );
     } elseif (isset($_POST['newPage'])) {
         $db->query(
-            'INSERT INTO `templates` (`title`, `slug`, `description`, `template`) VALUES (?, ?, ?, ?)',
+            'INSERT INTO `pages` (`title`, `slug`, `description`, `template`) VALUES (?, ?, ?, ?)',
             $_POST['pageTitle'],
             $_POST['pageDescription'],
             $_POST['pageSlug'],

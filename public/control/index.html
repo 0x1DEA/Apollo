@@ -406,20 +406,20 @@
     let items1 = document.getElementsByClassName("dropdown-item");
     let items2 = document.getElementsByClassName("dropdown-item");
     let items3 = document.getElementsByClassName("dropdown-item");
-    var beautify = ace.require("ace/ext/beautify");
-    var editor = ace.edit("editor");
+    let beautify = ace.require("ace/ext/beautify");
+    let editor = ace.edit("editor");
     editor.setTheme("ace/theme/clouds");
     editor.session.setMode("ace/mode/twig");
 
     function save() {
-        var data = new FormData();
+        let data = new FormData();
         data.append('templateSave', "1");
         data.append('themeNumber', theme);
         data.append('groupNumber', group);
         data.append('templateName', template);
         data.append('templateData', editor.getValue());
 
-        var xmlhttp = new XMLHttpRequest();
+        let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 $('.toast').toast('show');
@@ -431,16 +431,14 @@
 
     function buildDropDown(num) {
         let contents = [];
-        let names = [];
-        var xmlhttp = new XMLHttpRequest();
+        let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
-                names = this.responseText.split(",");
+                let names = this.responseText.split(",");
                 for (let name of names) {
                     contents.push('<input type="button" class="dropdown-item" type="button" value="' + name + '"/>')
                 }
-                $('#templates' + num).empty();
-                $('#templates' + num).append(contents.join(""));
+                $('#templates' + num).empty().append(contents.join(""));
 
                 //Hide the row that shows no items were found
                 $('#empty' + num).hide();
@@ -451,7 +449,7 @@
     }
 
     function fetch(template) {
-        var xmlhttp = new XMLHttpRequest();
+        let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 editor.setValue(this.responseText);
@@ -478,7 +476,6 @@
                 items = items3;
                 break;
         }
-        let collection = [];
         let hidden = 0;
         for (let i = 0; i < length; i++) {
             if (items[i].value.toLowerCase().startsWith(word)) {

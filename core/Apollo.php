@@ -44,12 +44,17 @@ class Apollo
     /**
      * @var string
      */
-    public string $theme;
+    public string $theme = '1';
+    /**
+     * @var ErrorHandler
+     */
+    public ErrorHandler $handler;
+    /**
+     * @var Database
+     */
+    public Database $db;
 
     public function __construct()
     {
-
     }
-
-
 }
