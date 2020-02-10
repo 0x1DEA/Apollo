@@ -1,5 +1,30 @@
+<p align="center">
+    <img src="https://apollo.cafe/assets/apollo_logo.svg" height="130" />
+</p>
+<p align="center">
+  <a href="https://github.com/SeeBeyondDev/Apollo/blob/master/LICENSE" alt="License">
+    <img src="https://img.shields.io/github/license/SeeBeyondDev/Apollo">
+  </a>
+  <a href="https://github.com/SeeBeyondDev/Apollo/releases" alt="Release">
+    <img src="https://img.shields.io/github/v/release/SeeBeyondDev/Apollo?include_prereleases">
+  </a>
+  <a href="https://github.com/SeeBeyondDev/Apollo/issues" alt="Issues">
+    <img src="https://img.shields.io/github/issues/SeeBeyondDev/Apollo">
+  </a>
+  <a href="https://github.com/SeeBeyondDev/Apollo/graphs/contributors" alt="Contributors">
+    <img src="https://img.shields.io/github/contributors/SeeBeyondDev/Apollo" />
+  </a>
+  <a href="#" alt="PHP Version">
+    <img src="https://img.shields.io/badge/php-%5E7.4-informational" />
+  </a>
+  <a href="#" alt="Travis Build">
+    <img src="https://img.shields.io/travis/SeeBeyondDev/Apollo"
+  </a>
+  <a href="https://discord.gg/fxF8MPm" alt="Chat on Discord">
+    <img src="https://img.shields.io/discord/673330782357422091?logo=discord">
+  </a>   
+</p>
 
-# Apollo
 Apollo is a decoupled CMS for easily publishing different types content on the web. It's official modules include:
 - Comics
 - Videos
