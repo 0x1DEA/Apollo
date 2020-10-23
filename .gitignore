@@ -1,6 +1,4 @@
-vendor/*
-!vendor/twig/twig/src/Loader/DatabaseLoader.php
-!*/
+vendor
 
 composer.lock
 public/.htaccess
